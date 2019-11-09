@@ -1,1 +1,0 @@
-sqlite files go in this folder.

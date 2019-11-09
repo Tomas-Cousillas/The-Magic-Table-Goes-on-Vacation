@@ -18,7 +18,7 @@ app = Flask(__name__)
 # Database Setup
 #################################################
 #CONFIGURE DATABASE:
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/FINALdb"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/FINALdb.sqlite"
 db = SQLAlchemy(app)
 
 # reflect an existing database into a new model
