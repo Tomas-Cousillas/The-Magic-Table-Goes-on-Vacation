@@ -1406,3 +1406,10 @@
 			}
 
 		}
+
+/* set map, body, and html to 100% of the screen size */
+#map{
+	height: 200px;
+	width: 200px;
+}
+

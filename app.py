@@ -18,7 +18,7 @@ app = Flask(__name__)
 # Database Setup
 #################################################
 #CONFIGURE DATABASE:
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/AB_NYC_2019"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/FINALdb"
 db = SQLAlchemy(app)
 
 # reflect an existing database into a new model
@@ -27,9 +27,8 @@ Base = automap_base()
 Base.prepare(db.engine, reflect=True)
 
 # Save references to each table
-#Samples_Metadata = Base.classes.sample_metadata
-#Samples = Base.classes.samples
-
+listings_table = Base.classes.keys()
+print(listings_table)
 
 @app.route("/")
 def index():
