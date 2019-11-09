@@ -9,17 +9,23 @@
 		<title>Brooklyn</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="../assets/css/brooklyn.css" />
-		  <!-- Leaflet CSS & JS -->
-		  <link rel="stylesheetmap" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
-		  integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-		  crossorigin=""/>
-		  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
-		  integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
-		  crossorigin=""></script>
 		
-		  <!-- Our CSS -->
-		  <link rel="stylesheetmap" type="text/css" href="style.css">
+
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+		integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+		crossorigin=""/>
+
+		  <!-- Leaflet CSS & JS -->
+
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+		<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+		integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+		crossorigin=""></script>
+		
+		<!-- Our CSS -->
+		<link rel="stylesheetmap" type="text/css" href="style.css">
+
+		<link rel="stylesheet" href="../assets/css/brooklyn.css" />
 	</head>
 	<body id="top">
 
@@ -39,7 +45,8 @@
 				</section>
 
 			<!-- Main -->
-			<div id="map"></div>
+			<div id="map">
+			</div>
 
 			<!-- API key -->
 			<script type="text/javascript" src="config.js"></script>
@@ -54,7 +61,7 @@
 						<p>Ann, David, Shaena and Tomás</p>
 
 						<ul class="icons">
-							<li><a href="index.html" class="icon fa-home"><span class="label">Home</span></a></li>
+							<li><a href="../index.html" class="icon fa-home"><span class="label">Home</span></a></li>
 							<li><a href="https://twitter.com/nycgov" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
 							<li><a href="https://www.facebook.com/nycgo/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
 							<li><a href="https://www.instagram.com/nycgov/?hl=en" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
