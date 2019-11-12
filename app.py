@@ -37,7 +37,8 @@ def index():
 
 
 @app.route("/Brooklyn")
-Select_B(Bronx)
+def Brooklynplot():    
+    Select_B(Bronx)
     return jsonify(Select_B)
     return render_template("Brooklyn.html")
 
@@ -76,4 +77,19 @@ def Select_B(neighbourhood_group):
 
     results = db.session.query(*sel).filter(listings.neighbourhood_group == neighbourhood_group).all()
 
-    return results
+    #return results
+    #Create a dictionary entry for each row of listings information
+    listings_list = []
+    for result in results:
+        listing = {}
+        listing["id"] = result[0]
+        listing["name"] = result[1]
+        listing["neighbourhood_group"] = result[2]
+        listing["latitude"] = result[3]
+        listing["longitude"] = result[4]
+        listing["room_type"] = result[5]
+        listing["price"] = result[6]
+        listing["minimum_nights"] = result[7]
+        listings_list.append(listing)
+    
+    return listings_list
