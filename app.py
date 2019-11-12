@@ -26,7 +26,7 @@ Base = automap_base()
 Base.prepare(db.engine, reflect=True)
 # Save references to each table
 # Print all of the classes mapped to the Base
-#print(Base.classes.keys())
+print(Base.classes.keys())
 # Save reference to table
 listings = Base.classes.AB_NYC_2019
 
@@ -35,26 +35,45 @@ def index():
     """Return the homepage."""
     return render_template("index.html")
 
-#Add other routes here:
+
 @app.route("/Brooklyn")
-def Brooklynplot():
-    graphplot(BrooklynDF)
-    return render_template("brooklyn.html")
+Select_B(Bronx)
+    return jsonify(Select_B)
+    return render_template("Brooklyn.html")
+
 
 @app.route("/Queens")
 def Queensplot():
-    graphplot(QueensDF)
+    Select_B(Queens)
     return render_template("queens.html")
 
 @app.route("/Manhattan")
 def Manplot():
-    graphplot(ManhattanDF)
+    Select_B(Manhattan)
     return render_template("manhattan.html")
 
 @app.route("/Bronx")
 def Bronxplot():
-    graphplot(bronxDF)
+    Select_B(Bronx)
+    return jsonify(Select_B)
     return render_template("bronx.html")
 
 if __name__ == "__main__":
     app.run()
+
+def Select_B(neighbourhood_group):
+    """Return the Brooklyn Data"""
+    sel = [
+        listings.id,
+        listings.name,
+        listings.neighbourhood_group,
+        listings.latitude,
+        listings.longitude,
+        listings.room_type,
+        listings.price,
+        listings.minimum_nights
+    ]
+
+    results = db.session.query(*sel).filter(listings.neighbourhood_group == neighbourhood_group).all()
+
+    return results

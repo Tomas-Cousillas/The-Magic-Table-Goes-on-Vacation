@@ -9,7 +9,7 @@
 		<title>The Magic Table</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}" />
 	</head>
 	<body id="top">
 
@@ -19,7 +19,7 @@
 				its extension (eg. images/banner). Your video must be available in both .mp4 and .webm
 				formats to work correctly.
 			-->
-				<section id="banner" data-video="images/banner">
+				<section id="banner" data-video="{{ url_for('static', filename='images/banner.jpg') }}">
 					<div class="inner">
 						<header>
 							<h1>NYC Airbnb</h1>
@@ -38,7 +38,7 @@
 						<div class="thumbnails">
 
 							<div class="box">
-								<a href="boroughs/brooklyn.html" class="image fit" data-poptrox="youtube,800x400"><img src="images/pic01.jpg" alt="" /></a>
+								<a href="boroughs/brooklyn.html" class="image fit" data-poptrox="youtube,800x400"><img src="{{ url_for('static', filename='images/pic01.jpg') }}" alt="" /></a>
 								<div class="inner">
 									<h3>Brooklyn</h3>
 									<p>"Brooklyn's good. Brooklyn's funky. Brooklyn's happening." - <strong>Waris Dirie</strong>
