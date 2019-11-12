@@ -16,22 +16,19 @@ app = Flask(__name__)
 # Database Setup
 #################################################
 #CONFIGURE DATABASE:
-# Create Database Connection
 # ----------------------------------
-engine = create_engine(f"sqlite:///db/FINALdb.sqlite")
-conn = engine.connect()
-# Query All Records in the the Database
-dataframe = pd.read_sql("SELECT * FROM AB_NYC_2019", conn)
-#transform the datafframe into a json object
-#filter json objects into boroughs
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/FINALdb.sqlite"
+db = SQLAlchemy(app)
 
-
-#BrooklynDF = dataframe.loc[data["neighbourhood_group"] == "Brooklyn"]
-#QueensDF = dataframe.loc[data["neighbourhood_group"] == "Queens"]
-#ManhattanDF = dataframe.loc[data["neighbourhood_group"] == "Manhattan"]
-#StatenDF = dataframe.loc[data["neighbourhood_group"] == "Staten Island"]
-#BronxDF = dataframe.loc[data["neighbourhood_group"] == "Bronx"]
-
+# reflect an existing database into a new model
+Base = automap_base()
+# reflect the tables
+Base.prepare(db.engine, reflect=True)
+# Save references to each table
+# Print all of the classes mapped to the Base
+#print(Base.classes.keys())
+# Save reference to table
+listings = Base.classes.AB_NYC_2019
 
 @app.route("/")
 def index():
