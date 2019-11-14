@@ -1,30 +1,26 @@
 // An array of cities and their locations
 var boroughs = [
   {
-    name: "Brooklyn",
-    location: [40.6782, -73.9442]
-  },
-
-  {
-    name: "The Bronx",
-    location: [40.8448, -73.8648]
-  },
-
-  { 
     name: "Mahattan",
     location: [40.7831, -73.9712]
-  },
-  
-  {
-    name: "Queens",
-    location: [40.7282, -73.7949]
-  },
-
-  {
-    name: "Saten Island",
-    location: [40.5795, -74.1502]
   }
 ];
+
+fetch("http://127.0.0.1:5000/Manhattan",{
+  "Access-Control-Allow-Origin": "*"
+})
+  .then( data =>  {
+    return data.json()
+  })
+  .then(function (data) {
+    console.log(data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+  .then( function (data) {
+    //ADD MARKER CODE HERE:
+    //reference listings_list as "data"
 
 // An array which will be used to store created cityMarkers
 var boroughsMarkers = [];
@@ -94,11 +90,16 @@ var overlayMaps = {
 
 // Create map object and set default layers
 var myMap = L.map("map", {
-  center: [40.7128, -74.0060],
-  zoom: 11,
+  center: [40.7831, -73.9712],
+  zoom: 12,
   layers: [all_listings, boroughsLayer]
 });
 
 // Pass our map layers into our layer control
 // Add the layer control to the map
 L.control.layers(baseMaps, overlayMaps).addTo(myMap);
+
+
+  });
+
+  

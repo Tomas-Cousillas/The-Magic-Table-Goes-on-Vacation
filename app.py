@@ -29,6 +29,8 @@ Base.prepare(db.engine, reflect=True)
 print(Base.classes.keys())
 # Save reference to table
 listings = Base.classes.AB_NYC_2019
+
+#Will use this function in app.js to create charts for each borough:
 def Select_B(neighbourhood_group):
     """Return the Brooklyn Data"""
     sel = [
@@ -42,7 +44,7 @@ def Select_B(neighbourhood_group):
         listings.minimum_nights
     ]
 
-    results = db.session.query(*sel).filter(listings.neighbourhood_group == neighbourhood_group).all()
+    results = db.session.query(*sel).filter(listings.neighbourhood_group == neighbourhood_group).filter(listings.latitude != None).filter(listings.longitude != None).all()
 
     #return results
     #Create a dictionary entry for each row of listings information
@@ -76,21 +78,35 @@ def Brooklynplot():
 
 @app.route("/Queens")
 def Queensplot():
-    Select_B(Queens)
-    return render_template("queens.html")
+    print("Queens route works!")
+    return jsonify(Select_B("Queens"))
+    # return render_template("Queens.html")
 
 @app.route("/Manhattan")
 def Manplot():
-    Select_B(Manhattan)
-    return render_template("manhattan.html")
+    print("Manhattan route works!")
+    return jsonify(Select_B("Manhattan"))
+    # return render_template("Manhattan.html")
 
 @app.route("/Bronx")
 def Bronxplot():
-    Select_B(Bronx)
-    return jsonify(Select_B)
-    return render_template("bronx.html")
+    print("Bronx route works!")
+    return jsonify(Select_B("Bronx"))
+    # return render_template("Bronx.html")
+
+@app.route("/Statenisland")
+def staten():
+    print("Staten route works!")
+    return jsonify(Select_B("Staten Island"))
+    # return render_template("Bronx.html")
+
+
+@app.route("/All")
+def all():
+    print("All route works!")
+    return jsonify(Select_B("Bronx"))
+    # return render_template("all.html")
 
 if __name__ == "__main__":
     app.run()
 
-#Will use this function in app.js to create charts for each borough

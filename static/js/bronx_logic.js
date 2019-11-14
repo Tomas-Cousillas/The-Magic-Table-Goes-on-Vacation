@@ -6,6 +6,23 @@ var boroughs = [
   }
 ];
 
+fetch("http://127.0.0.1:5000/Bronx",{
+  "Access-Control-Allow-Origin": "*"
+})
+  .then( data =>  {
+    return data.json()
+  })
+  .then(function (data) {
+    console.log(data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+  .then( function (data) {
+    //ADD MARKER CODE HERE:
+    //reference listings_list as "data"
+
+
 // An array which will be used to store created cityMarkers
 var boroughsMarkers = [];
 
@@ -82,3 +99,6 @@ var myMap = L.map("map", {
 // Pass our map layers into our layer control
 // Add the layer control to the map
 L.control.layers(baseMaps, overlayMaps).addTo(myMap);
+
+  });
+  
