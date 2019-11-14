@@ -44,7 +44,7 @@ def Select_B(neighbourhood_group):
         listings.minimum_nights
     ]
 
-    results = db.session.query(*sel).filter(listings.neighbourhood_group == neighbourhood_group).filter(listings.latitude != None).filter(listings.longitude != None).all()
+    results = db.session.query(*sel).filter(listings.neighbourhood_group.in_(neighbourhood_group)).filter(listings.latitude != None).filter(listings.longitude != None).all()
 
     #return results
     #Create a dictionary entry for each row of listings information
@@ -72,39 +72,40 @@ def index():
 @app.route("/Brooklyn")
 def Brooklynplot():    
     print("Brooklyn route works!")
-    return jsonify(Select_B("Brooklyn"))
+    return jsonify(Select_B(["Brooklyn"]))
     # return render_template("Brooklyn.html")
 
-
-@app.route("/Queens")
-def Queensplot():
-    print("Queens route works!")
-    return jsonify(Select_B("Queens"))
-    # return render_template("Queens.html")
 
 @app.route("/Manhattan")
 def Manplot():
     print("Manhattan route works!")
-    return jsonify(Select_B("Manhattan"))
+    return jsonify(Select_B(["Manhattan"]))
     # return render_template("Manhattan.html")
 
 @app.route("/Bronx")
 def Bronxplot():
     print("Bronx route works!")
-    return jsonify(Select_B("Bronx"))
+    return jsonify(Select_B(["Bronx"]))
     # return render_template("Bronx.html")
 
 @app.route("/Statenisland")
 def staten():
     print("Staten route works!")
-    return jsonify(Select_B("Staten Island"))
+    return jsonify(Select_B(["Staten Island"]))
     # return render_template("Bronx.html")
+
+
+@app.route("/Queens")
+def Queensplot():
+    print("Queens route works!")
+    return jsonify(Select_B(["Queens"]))
+    # return render_template("Queens.html")
 
 
 @app.route("/All")
 def all():
     print("All route works!")
-    return jsonify(Select_B("Bronx"))
+    return jsonify(Select_B(["Brooklyn", "Manhattan", "Bronx", "Queens", "Staten Island"]))
     # return render_template("all.html")
 
 if __name__ == "__main__":
