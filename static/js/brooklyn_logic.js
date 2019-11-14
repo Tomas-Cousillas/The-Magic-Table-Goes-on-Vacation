@@ -22,6 +22,7 @@ fetch("http://127.0.0.1:5000/Brooklyn",{
   })
   .then( function (data) {
     //ADD MARKER CODE HERE:
+    //reference listings_list as "data"
     
     // An array which will be used to store created cityMarkers
 var boroughsMarkers = [];
