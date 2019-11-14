@@ -1,3 +1,5 @@
+console.log("brooklyn js")
+
 // An array of cities and their locations
 var boroughs = [
   {
@@ -6,7 +8,22 @@ var boroughs = [
   }
 ];
 
-// An array which will be used to store created cityMarkers
+fetch("http://127.0.0.1:5000/Brooklyn",{
+  "Access-Control-Allow-Origin": "*"
+})
+  .then( data =>  {
+    return data.json()
+  })
+  .then(function (data) {
+    console.log(data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+  .then( function (data) {
+    //ADD MARKER CODE HERE:
+    
+    // An array which will be used to store created cityMarkers
 var boroughsMarkers = [];
 
 for (var i = 0; i < boroughs.length; i++) {
@@ -82,3 +99,6 @@ var myMap = L.map("map", {
 // Pass our map layers into our layer control
 // Add the layer control to the map
 L.control.layers(baseMaps, overlayMaps).addTo(myMap);
+
+  } )
+

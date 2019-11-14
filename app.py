@@ -29,39 +29,6 @@ Base.prepare(db.engine, reflect=True)
 print(Base.classes.keys())
 # Save reference to table
 listings = Base.classes.AB_NYC_2019
-
-@app.route("/")
-def index():
-    """Return the homepage."""
-    return render_template("index.html")
-
-
-@app.route("/Brooklyn")
-def Brooklynplot():    
-    Select_B(Bronx)
-    return jsonify(Select_B)
-    return render_template("Brooklyn.html")
-
-
-@app.route("/Queens")
-def Queensplot():
-    Select_B(Queens)
-    return render_template("queens.html")
-
-@app.route("/Manhattan")
-def Manplot():
-    Select_B(Manhattan)
-    return render_template("manhattan.html")
-
-@app.route("/Bronx")
-def Bronxplot():
-    Select_B(Bronx)
-    return jsonify(Select_B)
-    return render_template("bronx.html")
-
-if __name__ == "__main__":
-    app.run()
-
 def Select_B(neighbourhood_group):
     """Return the Brooklyn Data"""
     sel = [
@@ -93,3 +60,37 @@ def Select_B(neighbourhood_group):
         listings_list.append(listing)
     
     return listings_list
+
+@app.route("/")
+def index():
+    """Return the homepage."""
+    return render_template("index.html")
+
+
+@app.route("/Brooklyn")
+def Brooklynplot():    
+    print("Brooklyn route works!")
+    return jsonify(Select_B("Brooklyn"))
+    # return render_template("Brooklyn.html")
+
+
+@app.route("/Queens")
+def Queensplot():
+    Select_B(Queens)
+    return render_template("queens.html")
+
+@app.route("/Manhattan")
+def Manplot():
+    Select_B(Manhattan)
+    return render_template("manhattan.html")
+
+@app.route("/Bronx")
+def Bronxplot():
+    Select_B(Bronx)
+    return jsonify(Select_B)
+    return render_template("bronx.html")
+
+if __name__ == "__main__":
+    app.run()
+
+#Will use this function in app.js to create charts for each borough
