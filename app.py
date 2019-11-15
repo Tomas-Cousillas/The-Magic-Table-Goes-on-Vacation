@@ -63,6 +63,7 @@ def Select_B(neighbourhood_group):
     
     return listings_list
 
+
 @app.route("/")
 def index():
     """Return the homepage."""
@@ -92,7 +93,7 @@ def Bronxplot():
 def staten():
     print("Staten route works!")
     return jsonify(Select_B(["Staten Island"]))
-    # return render_template("Bronx.html")
+    # return render_template("Statenisland.html")
 
 
 @app.route("/Queens")

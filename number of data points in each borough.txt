@@ -1,0 +1,7 @@
+Brooklyn : 20104
+Bronx: 1091
+Manhattan: 21661
+Queens: 5666
+Staten Island: 373
+
+all: 48895
