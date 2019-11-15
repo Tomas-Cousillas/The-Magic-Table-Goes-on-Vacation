@@ -94,7 +94,7 @@ fetch("http://127.0.0.1:5000/Bronx", {
 
     // Create map object and set default layers
     var myMap = L.map("map", {
-      center: [40.6782, -73.9442],
+      center: [40.8448, -73.8648],
       zoom: 12,
       layers: [allListingsLayer, entireHouseLayer, heat_Layer]
     });

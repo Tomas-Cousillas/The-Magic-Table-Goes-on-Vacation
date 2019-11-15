@@ -94,7 +94,7 @@ fetch("http://127.0.0.1:5000/Statenisland", {
 
     // Create map object and set default layers
     var myMap = L.map("map", {
-      center: [40.6782, -73.9442],
+      center: [40.5795, -74.1502],
       zoom: 12,
       layers: [allListingsLayer, entireHouseLayer, heat_Layer]
     });
